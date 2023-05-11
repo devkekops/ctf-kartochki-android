@@ -41,7 +41,6 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        //ArrayList<Pair<String, String>> espRus = new ArrayList<Pair<String, String>>();
         espRus.add(new Pair<String, String>("chica", "девушка"));
         espRus.add(new Pair<String, String>("padre", "отец"));
         espRus.add(new Pair<String, String>("сuatro", "четыре"));
@@ -57,7 +56,7 @@ public class MainActivity extends AppCompatActivity {
         inputText = (EditText)findViewById(R.id.inputText);
         button = (Button)findViewById(R.id.button);
 
-        showNext();
+        showNextEsp();
 
         button.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -74,7 +73,7 @@ public class MainActivity extends AppCompatActivity {
             if (counter == wordCount) {
                 stateDialog();
             } else {
-                showNext();
+                showNextEsp();
             }
         } else {
             Toast.makeText(MainActivity.this, "Неправильно!", Toast.LENGTH_SHORT).show();
@@ -84,20 +83,20 @@ public class MainActivity extends AppCompatActivity {
 
     public void stateDialog() {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setTitle("Бесплатные слова закончились");
-        builder.setMessage("Свяжитесь с поддержкой чтобы подключить подписку");
+        builder.setTitle("Поздравляем!");
+        builder.setMessage("Вы перевели все слова");
         builder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
                 counter = 0;
-                showNext();
+                showNextEsp();
             }
         });
         AlertDialog dialog = builder.create();
         dialog.show();
     }
 
-    public void showNext() {
+    public void showNextEsp() {
         wordView.setText(espRus.get(counter).first);
         statusView.setText("Слово " + String.valueOf(counter + 1) + "/" + String.valueOf(wordCount));
     }
