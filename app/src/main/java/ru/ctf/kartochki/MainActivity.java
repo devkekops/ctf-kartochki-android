@@ -1,10 +1,12 @@
 package ru.ctf.kartochki;
 
+import android.content.DialogInterface;
 import android.os.Bundle;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
@@ -32,7 +34,7 @@ public class MainActivity extends AppCompatActivity {
     Button button;
     ArrayList<Pair<String, String>> espRus = new ArrayList<Pair<String, String>>();
     int counter = 0;
-    String wordCount = "";
+    int wordCount = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,12 +44,12 @@ public class MainActivity extends AppCompatActivity {
         //ArrayList<Pair<String, String>> espRus = new ArrayList<Pair<String, String>>();
         espRus.add(new Pair<String, String>("chica", "девушка"));
         espRus.add(new Pair<String, String>("padre", "отец"));
-        espRus.add(new Pair<String, String>("quatro", "четыре"));
+        espRus.add(new Pair<String, String>("сuatro", "четыре"));
         espRus.add(new Pair<String, String>("perro", "собака"));
         espRus.add(new Pair<String, String>("hora", "час"));
         espRus.add(new Pair<String, String>("raton", "мышь"));
         espRus.add(new Pair<String, String>("trabajo", "работа"));
-        wordCount = String.valueOf(espRus.size());
+        wordCount = espRus.size();
 
         labelView = (TextView)findViewById(R.id.labelView);
         statusView = (TextView)findViewById(R.id.statusView);
@@ -55,8 +57,7 @@ public class MainActivity extends AppCompatActivity {
         inputText = (EditText)findViewById(R.id.inputText);
         button = (Button)findViewById(R.id.button);
 
-        wordView.setText(espRus.get(counter).first);
-        statusView.setText("Слово " + String.valueOf(counter) + "/" + wordCount);
+        showNext();
 
         button.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -68,13 +69,36 @@ public class MainActivity extends AppCompatActivity {
 
     public void check() {
         if (inputText.getText().toString().equals(espRus.get(counter).second)) {
-            counter++;
-            wordView.setText(espRus.get(counter).first);
-            statusView.setText("Слово " + String.valueOf(counter) + "/" + wordCount);
             Toast.makeText(MainActivity.this, "Правильно!", Toast.LENGTH_SHORT).show();
+            counter++;
+            if (counter == wordCount) {
+                stateDialog();
+            } else {
+                showNext();
+            }
         } else {
             Toast.makeText(MainActivity.this, "Неправильно!", Toast.LENGTH_SHORT).show();
         }
         inputText.getText().clear();
+    }
+
+    public void stateDialog() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("Бесплатные слова закончились");
+        builder.setMessage("Свяжитесь с поддержкой чтобы подключить подписку");
+        builder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                counter = 0;
+                showNext();
+            }
+        });
+        AlertDialog dialog = builder.create();
+        dialog.show();
+    }
+
+    public void showNext() {
+        wordView.setText(espRus.get(counter).first);
+        statusView.setText("Слово " + String.valueOf(counter + 1) + "/" + String.valueOf(wordCount));
     }
 }
