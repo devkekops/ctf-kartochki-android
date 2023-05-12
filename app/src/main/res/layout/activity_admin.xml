@@ -28,7 +28,7 @@
         android:textSize="30sp"
         app:itemWidth="50dp"
         app:itemHeight="50dp"
-        app:itemCount="4"
+        app:itemCount="5"
         android:focusable="true"
         android:focusableInTouchMode="true"
        />

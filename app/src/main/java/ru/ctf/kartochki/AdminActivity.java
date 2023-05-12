@@ -23,8 +23,7 @@ public class AdminActivity extends AppCompatActivity {
 
     PinView pinView;
     AppCompatButton button;
-    Pattern p = Pattern.compile("11..72..cc..78..81..8d..b7..c7..02..9e..5f..38..18..dd..38..e7..");
-    String regex = "11..72..cc..78..81..8d..b7..c7..02..9e..5f..38..18..dd..38..e7..";
+    String regex = "2d..9f..19..1e..ee..d2..ba..0a..9f..f6..30..37..18..46..d0..40..";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,7 +53,7 @@ public class AdminActivity extends AppCompatActivity {
 
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-                if (charSequence.toString().length()==4) {
+                if (charSequence.toString().length()==5) {
                     String pin = charSequence.toString();
                     check(pin);
                 }
@@ -72,6 +71,7 @@ public class AdminActivity extends AppCompatActivity {
         if (!hash.matches(regex)) {
             Toast.makeText(getApplicationContext(), "Неверно", Toast.LENGTH_SHORT).show();
         } else {
+            Toast.makeText(getApplicationContext(), "Верно", Toast.LENGTH_SHORT).show();
             stateDialog("sbmt_ctf_" + hash);
         }
     }
