@@ -23,7 +23,7 @@ public class AdminActivity extends AppCompatActivity {
 
     PinView pinView;
     AppCompatButton button;
-    String regex = "2d..9f..19..1e..ee..d2..ba..0a..9f..f6..30..37..18..46..d0..40..";
+    String regex = "05..7d..17..b3..5f..d5..df..86..27..40..8d..f8..18..0c..2a..d0..";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,7 +53,7 @@ public class AdminActivity extends AppCompatActivity {
 
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-                if (charSequence.toString().length()==5) {
+                if (charSequence.toString().length()==6) {
                     String pin = charSequence.toString();
                     check(pin);
                 }
