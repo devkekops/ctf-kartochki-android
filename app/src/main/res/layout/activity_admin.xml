@@ -25,6 +25,7 @@
         android:layout_marginTop="50dp"
         android:layout_below="@id/labelView"
         android:inputType="number"
+        android:textSize="30sp"
         app:itemWidth="50dp"
         app:itemHeight="50dp"
         app:itemCount="4"

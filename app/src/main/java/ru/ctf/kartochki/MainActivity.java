@@ -66,7 +66,7 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    public void check() {
+    private void check() {
         if (inputText.getText().toString().equals(espRus.get(counter).second)) {
             Toast.makeText(MainActivity.this, "Правильно!", Toast.LENGTH_SHORT).show();
             counter++;
@@ -81,7 +81,7 @@ public class MainActivity extends AppCompatActivity {
         inputText.getText().clear();
     }
 
-    public void stateDialog() {
+    private void stateDialog() {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setTitle("Поздравляем!");
         builder.setMessage("Вы перевели все слова");
@@ -96,7 +96,7 @@ public class MainActivity extends AppCompatActivity {
         dialog.show();
     }
 
-    public void showNextEsp() {
+    private void showNextEsp() {
         wordView.setText(espRus.get(counter).first);
         statusView.setText("Слово " + String.valueOf(counter + 1) + "/" + String.valueOf(wordCount));
     }
