@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
+<RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -10,14 +10,10 @@
     <LinearLayout
         android:id="@+id/verticalLinear1"
         android:orientation="vertical"
-        android:gravity="center"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.10">
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="30dp">
         <TextView
             android:id="@+id/labelView"
             android:layout_width="wrap_content"
@@ -39,10 +35,9 @@
         android:orientation="vertical"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="50dp"
+        android:layout_below="@id/verticalLinear1">
         <TextView
             android:id="@+id/wordView"
             android:layout_width="wrap_content"
@@ -66,14 +61,13 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="50dp"
         android:layout_marginRight="50dp"
-        android:layout_marginBottom="100dp"
+        android:layout_marginBottom="30dp"
+        android:layout_alignParentBottom="true"
         app:backgroundTint="@null"
         android:background="@drawable/bg"
         android:text="Проверить"
         android:textSize="25dp"
         android:textColor="#ffffff"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"/>
+        />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+</RelativeLayout>
