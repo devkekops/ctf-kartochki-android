@@ -72,7 +72,7 @@ public class AdminActivity extends AppCompatActivity {
             Toast.makeText(getApplicationContext(), "Неверно", Toast.LENGTH_SHORT).show();
         } else {
             Toast.makeText(getApplicationContext(), "Верно", Toast.LENGTH_SHORT).show();
-            stateDialog("sbmt_ctf_" + hash);
+            stateDialog("sbmt{" + hash + "}");
         }
     }
 
